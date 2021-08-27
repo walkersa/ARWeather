@@ -434,6 +434,10 @@ PrefabInstance:
       propertyPath: temperature
       value: 
       objectReference: {fileID: 1097503795}
+    - target: {fileID: 4340895255660902399, guid: 9841241bd1fa4de4883ff3e9b0695e3d, type: 3}
+      propertyPath: setCollection
+      value: 
+      objectReference: {fileID: 11400000, guid: f83840ac519412b4c9f49777da47cf2e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9841241bd1fa4de4883ff3e9b0695e3d, type: 3}
 --- !u!114 &755539855 stripped

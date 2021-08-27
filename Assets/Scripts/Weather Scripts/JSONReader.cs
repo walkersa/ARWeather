@@ -11,6 +11,7 @@ public class JSONReader : MonoBehaviour
     public void ReadData(string path)
     {
         wdo = JsonConvert.DeserializeObject<WeatherDataObject>(File.ReadAllText(path));
+        Debug.Log("ID = " + wdo.list[0].weather[0].id);
         Debug.Log("City = " + wdo.city.name);
         Debug.Log("Temp = " + wdo.list[0].main.temp);
         Debug.Log("humidity = " + wdo.list[0].main.humidity);
@@ -27,6 +28,7 @@ public class JSONReader : MonoBehaviour
         display.DisplayTemperatureValue(wdo.list[0].main.temp);
         display.DisplayWindValue(wdo.list[0].wind.speed);
         display.DisplayHumidityValue(wdo.list[0].main.humidity);
+        display.SetSetup(wdo.list[0].weather[0].description);
     }
 
     //private void OnGUI()

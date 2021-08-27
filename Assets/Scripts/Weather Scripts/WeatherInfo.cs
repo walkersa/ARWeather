@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WeatherInfo
 {
+    
     public WeatherMain main { get; set; }
     public List<WeatherDescription> weather { get; set; }
 
@@ -11,6 +12,7 @@ public class WeatherInfo
 
     public class WeatherMain
     {
+        
         public string temp { get; set; }
         public string feels_like { get; set; }
         public string temp_min { get; set; }
@@ -20,6 +22,7 @@ public class WeatherInfo
 
     public class WeatherDescription
     {
+        public int id { get; set; }
         public string main { get; set; }
         public string description { get; set; }
     }
