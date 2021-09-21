@@ -17,18 +17,16 @@ public class JSONReader : MonoBehaviour
         Debug.Log("humidity = " + wdo.list[0].main.humidity);
         Debug.Log("Description = " + wdo.list[0].weather[0].description);
         Debug.Log("Wind speed = " + wdo.list[0].wind.speed);
-        DisplayData();
     }
 
-    private void DisplayData()
+    public void DisplayData(WeatherDisplayObject display)
     {
-        WeatherDisplayObject display = GetComponent<WeatherDisplayObject>();
         display.DisplayCityValue(wdo.city.name);
         display.DisplayDescriptionValue(wdo.list[0].weather[0].description);
         display.DisplayTemperatureValue(wdo.list[0].main.temp);
         display.DisplayWindValue(wdo.list[0].wind.speed);
         display.DisplayHumidityValue(wdo.list[0].main.humidity);
-        display.SetSetup(wdo.list[0].weather[0].description);
+        //display.SetSetup(wdo.list[0].weather[0].description);
     }
 
     //private void OnGUI()

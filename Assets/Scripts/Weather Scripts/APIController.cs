@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class APIController : MonoBehaviour
 {
     public string _apiAddress;
     public string _apiKey;
+
+    public UnityEvent OnCallComplete;
 
     private JSONWriter writer;
 
@@ -31,6 +34,7 @@ public class APIController : MonoBehaviour
         var result = await response.Content.ReadAsStringAsync();
         writer.OutputJSON(result, cityID);
         Debug.Log(result);
+        OnCallComplete.Invoke();
     }
 
     private string BuildAPIAddress(string cityID)
