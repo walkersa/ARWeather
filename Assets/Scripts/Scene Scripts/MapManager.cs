@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MapManager : MonoBehaviour
@@ -8,6 +10,8 @@ public class MapManager : MonoBehaviour
     public JSONReader reader;
     public RayFinder rf;
     public GameObject weatherInfoPrefab;
+    public string customPath;
+    public TextMeshProUGUI debugText;
 
     private Vector3 cityPos;
     private WeatherDisplayObject wdo;
@@ -44,8 +48,25 @@ public class MapManager : MonoBehaviour
         
         display.transform.position = cityPos;
         wdo = display.GetComponent<WeatherDisplayObject>();
-        reader.DisplayData(wdo);
+        string path = SetupPath();
+        reader.DisplayData(wdo, path);
 
+    }
+
+    private string SetupPath()
+    {
+        string savePath = "";
+#if UNITY_EDITOR
+        savePath = Application.dataPath + "/StreamingAssets" + customPath + $"/{currentID}.json";
+#endif
+
+#if UNITY_ANDROID
+        //savePath = Application.streamingAssetsPath + customPath + $"/{currentID}.json";
+        savePath = Application.persistentDataPath + $"/{currentID}.json";
+#endif
+        debugText.text = savePath;
+        Debug.Log("path = " + savePath);
+        return savePath;
     }
 
     private void OnDisable()

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4340895255660902395}
   - component: {fileID: 4340895255660902393}
   - component: {fileID: 4340895255660902392}
-  - component: {fileID: 4340895255660902399}
+  - component: {fileID: 345973610}
   m_Layer: 0
   m_Name: WeatherManager
   m_TagString: Untagged
@@ -48,6 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _apiAddress: http://api.openweathermap.org/data/2.5/forecast?id=
   _apiKey: '&appid=ed3fc9fd4428dbad496c5abe6768e4a4&units=metric'
+  OnCallComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &4340895255660902393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d80f4ad2804e8d40aa88e576f89f35e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4340895255660902399
+--- !u!114 &345973610
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -82,11 +85,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4340895255660902372}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4799051c2a1dfba45879fac409298ebd, type: 3}
+  m_Script: {fileID: 11500000, guid: 053c4691876a3b54db03500c55ed2cb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  city: {fileID: 0}
-  description: {fileID: 0}
-  temperature: {fileID: 0}
-  wind: {fileID: 0}
-  humidity: {fileID: 0}
+  apiController: {fileID: 4340895255660902395}
+  reader: {fileID: 4340895255660902392}
+  rf: {fileID: 0}
+  weatherInfoPrefab: {fileID: 3046118528061985574, guid: 20d1ba7ce66af2b449435a003e702126, type: 3}

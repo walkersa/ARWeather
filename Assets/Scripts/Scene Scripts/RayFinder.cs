@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,6 +9,7 @@ public class RayFinder : MonoBehaviour
 {
     public string findTag;
     public Camera arCamera;
+    public TextMeshProUGUI debugText;
     
     private bool canFindCity;
 
@@ -26,7 +28,7 @@ public class RayFinder : MonoBehaviour
 
     private void RayToFindCity()
     {
-        Ray ray = arCamera.ViewportPointToRay(arCamera.transform.position);
+        Ray ray = arCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         RaycastHit hit;
 
         //Debug.Log("ray pos = " + ray);
@@ -35,11 +37,18 @@ public class RayFinder : MonoBehaviour
         {
             if(hit.collider.tag == findTag)
             {
-                Debug.Log("hit city");
+                debugText.text = "city hit";
                 CityPosition = hit.transform.position;
                 FindCityID(hit.transform.gameObject);
+                CitySelected(hit.transform.gameObject);
             }
         }
+    }
+
+    private void CitySelected(GameObject go)
+    {
+        Renderer rend = go.GetComponentInChildren<Renderer>();
+        rend.material.SetColor("_Color", Color.blue);
     }
 
     private void FindCityID(GameObject go)

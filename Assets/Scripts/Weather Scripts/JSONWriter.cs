@@ -2,18 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using TMPro;
 
 public class JSONWriter : MonoBehaviour
 {
     public string customPath;
+    public TextMeshProUGUI debugText;
 
     public void OutputJSON(string s, string id)
     {
-        string savePath = Application.dataPath + customPath + $"/{id}.json";
+        string savePath = "";
+#if UNITY_EDITOR
+        savePath = Application.dataPath + "/StreamingAssets" + customPath + $"/{id}.json";
+#endif
+
+#if UNITY_ANDROID
+        //savePath = Application.streamingAssetsPath + customPath + $"/{id}.json";
+        savePath = Application.persistentDataPath + $"/{id}.json";
+#endif
+        debugText.text = savePath;
         File.WriteAllText(savePath, s);
         Debug.Log("write");
 
         JSONReader reader = GetComponent<JSONReader>();
-        reader.ReadData(savePath);
     }
 }
