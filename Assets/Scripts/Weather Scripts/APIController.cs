@@ -8,8 +8,7 @@ using UnityEngine.Events;
 
 public class APIController : MonoBehaviour
 {
-    public string _apiAddress;
-    public string _apiKey;
+    public Config config;
 
     public UnityEvent OnCallComplete;
 
@@ -39,7 +38,7 @@ public class APIController : MonoBehaviour
 
     private string BuildAPIAddress(string cityID)
     {
-        return _apiAddress + cityID + _apiKey;
+        return config.url + cityID + config.key;
     }
 
     //private async void OnGUI()

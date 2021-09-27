@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class MapManager : MonoBehaviour
 {
+    public Config config;
     public APIController apiController;
     public JSONReader reader;
     public RayFinder rf;
     public GameObject weatherInfoPrefab;
-    public string customPath;
     public TextMeshProUGUI debugText;
 
     private Vector3 cityPos;
@@ -57,7 +57,7 @@ public class MapManager : MonoBehaviour
     {
         string savePath = "";
 #if UNITY_EDITOR
-        savePath = Application.dataPath + "/StreamingAssets" + customPath + $"/{currentID}.json";
+        savePath = Application.dataPath + "/StreamingAssets" + config.localDirectory + $"/{currentID}.json";
 #endif
 
 #if UNITY_ANDROID

@@ -6,14 +6,14 @@ using TMPro;
 
 public class JSONWriter : MonoBehaviour
 {
-    public string customPath;
+    public Config config;
     public TextMeshProUGUI debugText;
 
     public void OutputJSON(string s, string id)
     {
         string savePath = "";
 #if UNITY_EDITOR
-        savePath = Application.dataPath + "/StreamingAssets" + customPath + $"/{id}.json";
+        savePath = Application.dataPath + "/StreamingAssets" + config.localDirectory + $"/{id}.json";
 #endif
 
 #if UNITY_ANDROID

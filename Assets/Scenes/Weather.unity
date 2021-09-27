@@ -138,10 +138,6 @@ PrefabInstance:
       propertyPath: debugText
       value: 
       objectReference: {fileID: 694267787}
-    - target: {fileID: 345973610, guid: 9841241bd1fa4de4883ff3e9b0695e3d, type: 3}
-      propertyPath: customPath
-      value: \WeatherData
-      objectReference: {fileID: 0}
     - target: {fileID: 4340895255660902372, guid: 9841241bd1fa4de4883ff3e9b0695e3d, type: 3}
       propertyPath: m_Name
       value: WeatherManager
@@ -154,10 +150,6 @@ PrefabInstance:
       propertyPath: debugText
       value: 
       objectReference: {fileID: 694267787}
-    - target: {fileID: 4340895255660902393, guid: 9841241bd1fa4de4883ff3e9b0695e3d, type: 3}
-      propertyPath: customPath
-      value: \WeatherData
-      objectReference: {fileID: 0}
     - target: {fileID: 4340895255660902394, guid: 9841241bd1fa4de4883ff3e9b0695e3d, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -229,7 +221,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694267785}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -238,7 +230,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 33, y: 23}
+  m_AnchoredPosition: {x: 33, y: 35.4}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &694267787
@@ -270,8 +262,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4293467648
+  m_fontColor: {r: 0, g: 0.11803032, b: 0.9150943, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -288,8 +280,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

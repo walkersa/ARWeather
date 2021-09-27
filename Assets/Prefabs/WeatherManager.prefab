@@ -46,8 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab3e5e1c5c77e714bac75ea55d0877b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _apiAddress: http://api.openweathermap.org/data/2.5/forecast?id=
-  _apiKey: '&appid=ed3fc9fd4428dbad496c5abe6768e4a4&units=metric'
+  config: {fileID: 11400000, guid: 8b592e7e4a713cc4fa10693ecbcb00de, type: 2}
   OnCallComplete:
     m_PersistentCalls:
       m_Calls: []
@@ -63,7 +62,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aeb68649355afa44a9b8aab248546882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customPath: \StreamingAssets\WeatherData
+  config: {fileID: 11400000, guid: 8b592e7e4a713cc4fa10693ecbcb00de, type: 2}
+  debugText: {fileID: 0}
 --- !u!114 &4340895255660902392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d80f4ad2804e8d40aa88e576f89f35e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugText: {fileID: 0}
 --- !u!114 &345973610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,7 +89,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 053c4691876a3b54db03500c55ed2cb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 8b592e7e4a713cc4fa10693ecbcb00de, type: 2}
   apiController: {fileID: 4340895255660902395}
   reader: {fileID: 4340895255660902392}
   rf: {fileID: 0}
   weatherInfoPrefab: {fileID: 3046118528061985574, guid: 20d1ba7ce66af2b449435a003e702126, type: 3}
+  debugText: {fileID: 0}

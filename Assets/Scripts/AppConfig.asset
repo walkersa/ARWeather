@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 086312cd54109024eb6ba205d8e2d074, type: 3}
+  m_Name: AppConfig
+  m_EditorClassIdentifier: 
+  url: http://api.openweathermap.org/data/2.5/forecast?id=
+  key: '&appid=ed3fc9fd4428dbad496c5abe6768e4a4'
+  localDirectory: \WeatherData
