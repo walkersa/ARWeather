@@ -28,11 +28,8 @@ public class JSONReader : MonoBehaviour
             Debug.Log("no weather data");
             return;
         }
-
         Debug.Log("City = " + wdo.name);
-
         Debug.Log("ID = " + wdo.weather[0].id);
-        
         Debug.Log("Temp = " + wdo.main.temp);
         Debug.Log("humidity = " + wdo.main.humidity);
         Debug.Log("Description = " + wdo.weather[0].description);
@@ -42,25 +39,25 @@ public class JSONReader : MonoBehaviour
     public void DisplayData(WeatherDisplayObject display, string path)
     {
 #if UNITY_ANDROID
-        //string j = RetrieveJsonString(path);
-        //if (String.IsNullOrEmpty(j))
-        //{
-        //    Debug.LogError("invalid path to streaming assets folder " + j);
-        //    debugText.text = "invalid path to streaming assets folder " + j;
-        //    return;
-        //}
-        //wdo = JsonConvert.DeserializeObject<WeatherDataObject>(File.ReadAllText(path));
+        string j = RetrieveJsonString(path);
+        if (String.IsNullOrEmpty(j))
+        {
+            Debug.LogError("invalid path to streaming assets folder " + j);
+            debugText.text = "invalid path to streaming assets folder " + j;
+            return;
+        }
+        wdo = JsonConvert.DeserializeObject<WeatherDataObject>(File.ReadAllText(path));
 #endif
 
 #if UNITY_EDITOR
-        //wdo = JsonConvert.DeserializeObject<WeatherDataObject>(File.ReadAllText(path));
+
 #endif
         display.DisplayCityValue(wdo.name);
         display.DisplayDescriptionValue(wdo.weather[0].description);
         display.DisplayTemperatureValue(wdo.main.temp);
         display.DisplayWindValue(wdo.wind.speed);
         display.DisplayHumidityValue(wdo.main.humidity);
-        //display.SetSetup(wdo.list[0].weather[0].description);
+        display.SetSetup(wdo.weather[0].description);
     }
 
     private string RetrieveJsonString(string path)
@@ -81,13 +78,4 @@ public class JSONReader : MonoBehaviour
 
         }
     }
-
-    //private void OnGUI()
-    //{
-    //    if (GUI.Button(new Rect(10, 120, 150, 100), "Read Json"))
-    //    {
-    //        Debug.Log("clicker!");
-    //        ReadData();
-    //    }
-    //}
 }

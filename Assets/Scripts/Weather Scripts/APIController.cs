@@ -19,6 +19,21 @@ public class APIController : MonoBehaviour
         writer = GetComponent<JSONWriter>();
     }
 
+    public async Task<WeatherDataObject> CallAPI(string cityID)
+    {
+        HTTPConnector connection = new HTTPConnector();
+        var result = await connection.Get<WeatherDataObject>(BuildAPIAddress(cityID));
+        OnCallComplete.Invoke();
+        return result;
+    }
+
+    private string BuildAPIAddress(string cityID)
+    {
+        return config.url + cityID + config.key;
+    }
+
+    #region Non active
+
     public async Task MakeAPICall(string id)
     {
         //await CallAPI(id);
@@ -36,28 +51,6 @@ public class APIController : MonoBehaviour
     //    Debug.Log(result);
     //    OnCallComplete.Invoke();
     //}
-
-    public async Task<WeatherDataObject> CallAPI(string cityID)
-    {
-        HTTPConnector connection = new HTTPConnector();
-        var result = await connection.Get<WeatherDataObject>(BuildAPIAddress(cityID));
-        //writer.OutputJSON(result, cityID);
-        Debug.Log(result.name);
-        //OnCallComplete.Invoke();
-        return result;
-    }
-
-    private string BuildAPIAddress(string cityID)
-    {
-        return config.url + cityID + config.key;
-    }
-
-    //private async void OnGUI()
-    //{
-    //    if (GUI.Button(new Rect(10, 10, 150, 100), "Call API"))
-    //    {
-    //       await CallAPI();
-    //    }
-    //}
+    #endregion
 }
 
