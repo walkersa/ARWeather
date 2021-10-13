@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
@@ -20,6 +21,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
         GameObject m_PlacedPrefab;
 
         public float offset;
+        public TextMeshProUGUI debugText;
 
         /// <summary>
         /// The prefab to instantiate on touch.
@@ -67,11 +69,11 @@ namespace UnityEngine.XR.ARFoundation.Samples
                 {
                     //spawnedObject = Instantiate(m_PlacedPrefab, hitPose.position, hitPose.rotation);
                     spawnedObject = Instantiate(m_PlacedPrefab);
-                    spawnedObject.transform.position = new Vector3(hitPose.position.x, hitPose.position.y + offset, hitPose.position.z); 
+                    spawnedObject.transform.position = new Vector3(hitPose.position.x, hitPose.position.y + offset, hitPose.position.z);
                 }
                 else
                 {
-                    spawnedObject.transform.position = hitPose.position;
+                    spawnedObject.transform.position = new Vector3(hitPose.position.x, hitPose.position.y + offset, hitPose.position.z);
                 }
             }
         }

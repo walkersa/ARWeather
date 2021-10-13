@@ -23,6 +23,7 @@ public class WeatherDisplayObject : MonoBehaviour
     public void DisplayDescriptionValue(string value)
     {
         description.text = value;
+        SetSetup(value);
     }
 
     public void DisplayTemperatureValue(string value)
@@ -46,6 +47,7 @@ public class WeatherDisplayObject : MonoBehaviour
     public void SetSetup(string c)
     {
         GameObject newSet = Instantiate(setCollection.FetchSet((int)SetupCondition(c)));
+        newSet.transform.position = transform.position;
     }
 
     //this should get updated to use the IDs - right now its just testing the concept - https://openweathermap.org/weather-conditions
@@ -65,7 +67,7 @@ public class WeatherDisplayObject : MonoBehaviour
             case "Rain":
                 return WeatherConditions.rain;
             case "thunderstorm":
-                return WeatherConditions.thuderstorm;
+                return WeatherConditions.thunderstorm;
             case "snow":
                 return WeatherConditions.snow;
             case "mist":

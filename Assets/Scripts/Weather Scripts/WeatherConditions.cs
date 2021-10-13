@@ -10,7 +10,7 @@ public enum WeatherConditions : int
     broken_clouds,
     shower_rain,
     rain = 1,
-    thuderstorm,
+    thunderstorm,
     snow,
     mist
 }

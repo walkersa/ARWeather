@@ -12,17 +12,31 @@ public class JSONReader : MonoBehaviour
 {
     public WeatherDataObject wdo = new WeatherDataObject();
     public TextMeshProUGUI debugText;
+
+    public void SetWeatherObject(WeatherDataObject obj)
+    {
+        wdo = obj;
+    }
     
     //debugging method
     public void ReadDataDebug(string path)
     {
+        Debug.Log("read path = "+ path);
         wdo = JsonConvert.DeserializeObject<WeatherDataObject>(File.ReadAllText(path));
-        Debug.Log("ID = " + wdo.list[0].weather[0].id);
-        Debug.Log("City = " + wdo.city.name);
-        Debug.Log("Temp = " + wdo.list[0].main.temp);
-        Debug.Log("humidity = " + wdo.list[0].main.humidity);
-        Debug.Log("Description = " + wdo.list[0].weather[0].description);
-        Debug.Log("Wind speed = " + wdo.list[0].wind.speed);
+        if(wdo == null)
+        {
+            Debug.Log("no weather data");
+            return;
+        }
+
+        Debug.Log("City = " + wdo.name);
+
+        Debug.Log("ID = " + wdo.weather[0].id);
+        
+        Debug.Log("Temp = " + wdo.main.temp);
+        Debug.Log("humidity = " + wdo.main.humidity);
+        Debug.Log("Description = " + wdo.weather[0].description);
+        Debug.Log("Wind speed = " + wdo.wind.speed);
     }
 
     public void DisplayData(WeatherDisplayObject display, string path)
@@ -35,17 +49,17 @@ public class JSONReader : MonoBehaviour
         //    debugText.text = "invalid path to streaming assets folder " + j;
         //    return;
         //}
-        wdo = JsonConvert.DeserializeObject<WeatherDataObject>(File.ReadAllText(path));
+        //wdo = JsonConvert.DeserializeObject<WeatherDataObject>(File.ReadAllText(path));
 #endif
 
 #if UNITY_EDITOR
-        wdo = JsonConvert.DeserializeObject<WeatherDataObject>(File.ReadAllText(path));
+        //wdo = JsonConvert.DeserializeObject<WeatherDataObject>(File.ReadAllText(path));
 #endif
-        display.DisplayCityValue(wdo.city.name);
-        display.DisplayDescriptionValue(wdo.list[0].weather[0].description);
-        display.DisplayTemperatureValue(wdo.list[0].main.temp);
-        display.DisplayWindValue(wdo.list[0].wind.speed);
-        display.DisplayHumidityValue(wdo.list[0].main.humidity);
+        display.DisplayCityValue(wdo.name);
+        display.DisplayDescriptionValue(wdo.weather[0].description);
+        display.DisplayTemperatureValue(wdo.main.temp);
+        display.DisplayWindValue(wdo.wind.speed);
+        display.DisplayHumidityValue(wdo.main.humidity);
         //display.SetSetup(wdo.list[0].weather[0].description);
     }
 
