@@ -12,6 +12,7 @@ public class MapManager : MonoBehaviour
     public RayFinder rf;
     public GameObject weatherInfoPrefab;
     public TextMeshProUGUI debugText;
+    public bool inEditor;
 
     private Vector3 cityPos;
     private WeatherDisplayObject wdo;
@@ -27,16 +28,18 @@ public class MapManager : MonoBehaviour
     {
         rf.OnFindCity.AddListener(CityFound);
         apiController.OnCallComplete.AddListener(SetupWeatherInfo);
-        rf.SetFindCity(true);
+
+        if(!inEditor)
+            rf.SetFindCity(true);
 
     }
 
-    private void CityFound()
+    private async void CityFound()
     {
         if (currentID == rf.CurrentCityID)
             return;
 
-        apiController.MakeAPICall(rf.CurrentCityID.ToString());
+        await apiController.CallAPI(rf.CurrentCityID.ToString());
         cityPos = rf.CityPosition;
         currentID = rf.CurrentCityID;
     }

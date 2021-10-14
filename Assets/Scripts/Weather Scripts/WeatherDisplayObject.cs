@@ -15,6 +15,8 @@ public class WeatherDisplayObject : MonoBehaviour
     public WeatherConditions conditions;
     public SetCollection setCollection;
 
+    private GameObject set;
+
     public void DisplayCityValue(string value)
     {
         city.text = value;
@@ -46,8 +48,13 @@ public class WeatherDisplayObject : MonoBehaviour
 
     public void SetSetup(string c)
     {
-        GameObject newSet = Instantiate(setCollection.FetchSet((int)SetupCondition(c)));
-        newSet.transform.position = transform.position;
+        if(set != null)
+        {
+            Destroy(set);
+        }
+
+        set = Instantiate(setCollection.FetchSet((int)SetupCondition(c)));
+        set.transform.position = transform.position;
     }
 
     //this should get updated to use the IDs - right now its just testing the concept - https://openweathermap.org/weather-conditions

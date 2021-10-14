@@ -39,14 +39,17 @@ public class JSONReader : MonoBehaviour
     public void DisplayData(WeatherDisplayObject display, string path)
     {
 #if UNITY_ANDROID
-        string j = RetrieveJsonString(path);
-        if (String.IsNullOrEmpty(j))
-        {
-            Debug.LogError("invalid path to streaming assets folder " + j);
-            debugText.text = "invalid path to streaming assets folder " + j;
-            return;
-        }
+
         wdo = JsonConvert.DeserializeObject<WeatherDataObject>(File.ReadAllText(path));
+
+        //string j = RetrieveJsonString(path);
+        //if (String.IsNullOrEmpty(j))
+        //{
+        //    Debug.LogError("invalid path to streaming assets folder " + j);
+        //    debugText.text = "invalid path to streaming assets folder " + j;
+        //    return;
+        //}
+
 #endif
 
 #if UNITY_EDITOR

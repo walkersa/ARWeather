@@ -28,7 +28,17 @@ public class RayFinder : MonoBehaviour
 
     private void RayToFindCity()
     {
-        Ray ray = arCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        Ray ray = new Ray();
+        if (!canFindCity)
+        {
+            Vector3 mousePos = Input.mousePosition;
+            ray = arCamera.ScreenPointToRay(mousePos);
+        }
+        else
+        {
+            ray = arCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        }
+        
         RaycastHit hit;
 
         //Debug.Log("ray pos = " + ray);
@@ -60,5 +70,10 @@ public class RayFinder : MonoBehaviour
     public void SetFindCity(bool value)
     {
         canFindCity = value;
+    }
+
+    public void FindCity()
+    {
+        RayToFindCity();
     }
 }
