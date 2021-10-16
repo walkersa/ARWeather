@@ -18,6 +18,7 @@ public class MapManager : MonoBehaviour
     private WeatherDisplayObject wdo;
     private int currentID;
     private GameObject display;
+    private WeatherDataObject currentData;
 
     public void Start()
     {
@@ -27,7 +28,7 @@ public class MapManager : MonoBehaviour
     public void StartSearch()
     {
         rf.OnFindCity.AddListener(CityFound);
-        apiController.OnCallComplete.AddListener(SetupWeatherInfo);
+        //apiController.OnCallComplete.AddListener(SetupWeatherInfo);
 
         if(!inEditor)
             rf.SetFindCity(true);
@@ -36,12 +37,19 @@ public class MapManager : MonoBehaviour
 
     private async void CityFound()
     {
+        Debug.Log("city found");
         if (currentID == rf.CurrentCityID)
+        {
+            Debug.Log("city ID same");
             return;
+        }
+            
 
-        await apiController.CallAPI(rf.CurrentCityID.ToString());
+        currentData = await apiController.CallAPI(rf.CurrentCityID.ToString());
         cityPos = rf.CityPosition;
         currentID = rf.CurrentCityID;
+        SetupWeatherInfo();
+        Debug.Log("MM current ID value = " + currentID);
     }
 
     private void SetupWeatherInfo()
@@ -51,9 +59,18 @@ public class MapManager : MonoBehaviour
         
         display.transform.position = cityPos;
         wdo = display.GetComponent<WeatherDisplayObject>();
-        string path = SetupPath();
-        reader.DisplayData(wdo, path);
+        ShowData();
 
+    }
+
+    private void ShowData()
+    {
+        wdo.DisplayCityValue(currentData.name);
+        wdo.DisplayDescriptionValue(currentData.weather[0].description);
+        wdo.DisplayTemperatureValue(currentData.main.temp);
+        wdo.DisplayWindValue(currentData.wind.speed);
+        wdo.DisplayHumidityValue(currentData.main.humidity);
+        wdo.SetSetup(currentData.weather[0].description);
     }
 
     private string SetupPath()
@@ -75,7 +92,7 @@ public class MapManager : MonoBehaviour
     private void OnDisable()
     {
         rf.OnFindCity.RemoveListener(CityFound);
-        apiController.OnCallComplete.RemoveListener(SetupWeatherInfo);
+        //apiController.OnCallComplete.RemoveListener(SetupWeatherInfo);
     }
 
 }

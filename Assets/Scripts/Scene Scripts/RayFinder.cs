@@ -51,6 +51,7 @@ public class RayFinder : MonoBehaviour
                 CityPosition = hit.transform.position;
                 FindCityID(hit.transform.gameObject);
                 CitySelected(hit.transform.gameObject);
+                OnFindCity.Invoke();
             }
         }
     }
@@ -64,7 +65,8 @@ public class RayFinder : MonoBehaviour
     private void FindCityID(GameObject go)
     {
         CurrentCityID = go.GetComponent<City>().cityID;
-        OnFindCity.Invoke();
+        Debug.Log("current city ID = " + CurrentCityID);
+        
     }
 
     public void SetFindCity(bool value)
