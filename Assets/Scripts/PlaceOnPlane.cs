@@ -21,7 +21,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
         GameObject m_PlacedPrefab;
 
         public float offset;
-        public TextMeshProUGUI debugText;
+        //public TextMeshProUGUI debugText;
 
         /// <summary>
         /// The prefab to instantiate on touch.

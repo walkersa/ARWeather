@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: AppConfig
   m_EditorClassIdentifier: 
   url: http://api.openweathermap.org/data/2.5/weather?id=
-  key: '&appid=ed3fc9fd4428dbad496c5abe6768e4a4'
+  key: '&units=metric&appid=ed3fc9fd4428dbad496c5abe6768e4a4'
   localDirectory: \WeatherData
